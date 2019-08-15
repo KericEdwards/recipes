@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header.js';
-import RecipeList from './RecipeList.js';
-import RecipeDetail from './RecipeDetail.js';
+import Header from './Header';
+import RecipeList from './RecipeList';
+import RecipeDetail from './RecipeDetail';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,18 +15,18 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch(`${API_URL}/v1/recipes`)
-    .then(res => res.json())
-    .then(recipes => {
-      this.setState({ recipes });
-    });
+      .then((res) => res.json())
+      .then((recipes) => {
+        this.setState({ recipes });
+      });
   }
 
   onRecipeClick = (id) => {
     fetch(`${API_URL}/v1/recipes/${id}`)
-    .then(res => res.json())
-    .then(recipe => {
-      this.setState({ currentRecipe: recipe });
-    });
+      .then((res) => res.json())
+      .then((recipe) => {
+        this.setState({ currentRecipe: recipe });
+      });
   }
 
   render() {
@@ -49,6 +49,6 @@ class App extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default App;
