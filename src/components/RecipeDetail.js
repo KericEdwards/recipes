@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 const RecipeDetail = props => {
@@ -26,17 +27,26 @@ const RecipeDetail = props => {
         <span>{props.recipe.calories} cal</span>
       </div>
       <h3>Ingredients</h3>
-      <ul>
-        {props.recipe.ingredients.map(ingredient => (
-          <li key={ingredient}>{ingredient}</li>
-        ))}
-      </ul>
+      {props.recipe.ingredients &&
+        <ul>
+          {props.recipe.ingredients.map(ingredient => (
+            <li key={ingredient}>{ingredient}</li>
+          ))}
+        </ul>
+      }
       <h3>Steps</h3>
-      <ol>
-        {props.recipe.steps.map(step => (
-          <li key={step}>{step}</li>
-        ))}
-      </ol>
+      {props.recipe.steps &&
+        <ol>
+          {props.recipe.steps.map(step => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      }
+      <Link
+        to={`/recipe/${props.recipe.id}`}
+      >
+        See more
+      </Link>
     </div>
   );
 };
